@@ -1,0 +1,86 @@
+<%- include header_carousel.ejs %>
+
+    <style type="text/css">
+    .comments {
+        width:100%;/*自动适应父布局宽度*/
+        overflow:auto;
+        word-break:break-all;
+        /*在ie中解决断行问题(防止自动变为在一行显示，主要解决ie兼容问题，ie8中当设宽度为100%时，文本域类容超过一行时，
+        当我们双击文本内容就会自动变为一行显示，所以只能用ie的专有断行属性“word-break或word-wrap”控制其断行)*/
+    }
+
+    /*.wall_bg {*/
+    /*/!*编译不过当时运行没有问题*!/*/
+    /*background:#99FF00 url(images/sanye.jpg) no-repeat fixed*/
+    /*}*/
+    /*.wall_not_bg {*/
+    /*/!*编译不过当时运行没有问题*!/*/
+    /*background:#FFFFFF*/
+    /*}*/
+</style>
+<div class="container marketing wall_bg">
+    <div class="row">
+        <p class="info">
+            <br />
+            <br />
+            <br />
+            <br />
+        </p>
+    </div><!-- /.row -->
+    <div class="row-fluid">
+        <div class="span2">
+        </div>
+        <div class="span8 wall_not_bg">
+            <!--54wall-->
+            <form method="post" action="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">
+                标题：<br />
+                <input type="text" name="title" value="<%= post.title %>" disabled="disabled" /><br />
+                标签：<br />
+                <input type="text" name="tag1" value="<%= post.tags[0] %>" disabled="disabled" />
+                <input type="text" name="tag2" value="<%= post.tags[1] %>" disabled="disabled" />
+                <input type="text" name="tag3" value="<%= post.tags[2] %>" disabled="disabled" /><br />
+                正文：<br />
+                <textarea name="post" rows="25" cols="100" class="input-block-level"><%= post.post %></textarea><br />
+                <input type="submit" value="保存修改" />
+            </form>
+        </div>
+        <div class="span2">
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2013 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+
+</div><!-- /.container -->
+
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="bootstrap/carousel/jquery.js"></script>
+<script src="bootstrap/carousel/bootstrap-transition.js"></script>
+<script src="bootstrap/carousel/bootstrap-alert.js"></script>
+<script src="bootstrap/carousel/bootstrap-modal.js"></script>
+<script src="bootstrap/carousel/bootstrap-dropdown.js"></script>
+<script src="bootstrap/carousel/bootstrap-scrollspy.js"></script>
+<script src="bootstrap/carousel/bootstrap-tab.js"></script>
+<script src="bootstrap/carousel/bootstrap-tooltip.js"></script>
+<script src="bootstrap/carousel/bootstrap-popover.js"></script>
+<script src="bootstrap/carousel/bootstrap-button.js"></script>
+<script src="bootstrap/carousel/bootstrap-collapse.js"></script>
+<script src="bootstrap/carousel/bootstrap-carousel.js"></script>
+<script src="bootstrap/carousel/bootstrap-typeahead.js"></script>
+<script>
+    !function ($) {
+        $(function(){
+            // carousel demo
+            $('#myCarousel').carousel()
+        })
+    }(window.jQuery)
+</script>
+<script src="bootstrap/carousel/holder.js"></script>
+</body>
+</html>

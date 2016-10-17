@@ -1,0 +1,57 @@
+<%- include header_carousel.ejs %>
+<div class="row-fluid">
+    <div class="span2">
+    </div>
+    <div class="span8">
+        <div class="span8">
+            <!--54wall-->
+            <br />
+            <br />
+            <br />
+            <br />
+            <header>
+                <h1><%= title %></h1>
+            </header>
+            <article>
+                <% if (success) { %>
+                <div><%= success %></div>
+                <% } %>
+                <% if (error) { %>
+                <div><%= error %> </div>
+                <% } %>
+            </article>
+            <% posts.forEach(function (post, index) { %>
+            <p><h2><a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></h2></p>
+
+            <p class="info">
+                作者：<a href="/u/<%= post.name %>"><%= post.name %></a> |
+                日期：<%= post.time.minute %>
+            </p>
+            <%if (post.post.length > 300) {
+                post.post = post.post.substring(0,300);
+                post.post = post.post + ' ...';
+
+            }%>
+            <p><%- post.post %></p>
+            <% }) %>
+        </div>
+    </div>
+    <div class="span2">
+    </div>
+</div>
+<%- include paging.ejs%>
+<!--只要增加相连的javascript就会报空指针异常-->
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!--<script src="bootstrap/carousel/jquery.js"></script>-->
+<!--<script src="bootstrap/carousel/bootstrap-transition.js"></script>-->
+<!--<script src="bootstrap/carousel/bootstrap-alert.js"></script>-->
+<!--<script src="bootstrap/carousel/bootstrap-modal.js"></script>-->
+<!--<script src="bootstrap/carousel/bootstrap-dropdown.js"></script>-->
+<!--<script src="bootstrap/carousel/bootstrap-scrollspy.js"></script>-->
+<!--<script src="bootstrap/carousel/bootstrap-tab.js"></script>-->
+<!--<script src="bootstrap/carousel/bootstrap-tooltip.js"></script>-->
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<%- include header %>
+<!--<style type="text/css">-->
+    <!--.inaline {-->
+        <!--overflow: hidden;-->
+        <!--white-space: nowrap;-->
+        <!--text-overflow: ellipsis;-->
+        <!--/*clip  修剪文本。*/-->
+    <!--}-->
+
+    <!--.intwoline {-->
+        <!--display: -webkit-box !important;-->
+        <!--overflow: hidden;-->
+        <!--text-overflow: ellipsis;-->
+        <!--word-break: break-all;-->
+        <!-&#45;&#45;webkit-box-orient: vertical;-->
+        <!-&#45;&#45;webkit-line-clamp: 5;-->
+    <!--}-->
+<!--</style>-->
+<% posts.forEach(function (post, index) { %>
+<p>
+<h2>
+    <a href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">
+        <%= post.title %>
+    </a>
+</h2>
+
+</p>
+<p class="info">
+    作者：<a href="u/<%= post.name %>"><%= post.name %></a> |
+    日期：<%= post.time.minute %>
+</p>
+
+<%if (post.post.length > 300) {
+    post.post = post.post.substring(0,300);
+    post.post = post.post + ' ...';
+}%>
+<%- post.post %>
+<% }) %>
+<!--在ejs中无法使用下边的方法对字数进行限制-->
+<!--<body>-->
+<!--<p style="width: 500px;border: 1px solid red;" class="intwoline">-->
+
+    <!--引擎和更新频度的描述和关键词。 标签位于文档的头部，不包含任何内容。 标签的属性定义了与文档相关联的名称/值对。-->
+    <!--元素可提供相关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词。 标签位于文档的头部，-->
+    <!--不包含任何内容。 标签的属性定义了与文档相关联的名称/值对。元素可提供相关页面的元信息（meta-information），比如-->
+    <!--针对搜索引擎和更新频度的描述和关键词。 标签位于文档的头部，不包含任何内容。 标签的属性定义了与文档相关联的名称/值-->
+    <!--对。元素可提供相关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词。 标签位于文档的头-->
+    <!--部，不包含任何内容。 标签的属性定义了与文档相关联的名称/值对。元素可提供相关页-->
+<!--</body>-->
+<%- include paging %>
+<%- include footer %>

@@ -1,0 +1,22 @@
+<%- include header %>
+<style type="text/css">
+    .tag{background-color:#ff0000;border-radius:3px;font-size:14px;color:#ffffff;display:inline-block;padding:0 5px;margin-bottom:8px;}
+    .tag:hover{text-decoration:none;background-color:#ffffff;color:#000000;-webkit-transition:color .2s linear;}
+</style>
+<% posts.forEach(function (post, index) { %>
+<p><h2><a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></h2></p>
+<p class="info">
+    作者：<a href="/u/<%= post.name %>"><%= post.name %></a> |
+    日期：<%= post.time.minute %>
+    标签：
+    <% post.tags.forEach(function (tag, index) { %>
+    <% if (tag) { %>
+    <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
+    <% } %>
+    <% }) %>
+</p>
+<p><%- post.post %></p>
+<% }) %>
+<%- include paging.ejs%>
+<%- include footer %>
+

@@ -1,0 +1,79 @@
+<%- include header_carousel.ejs %>
+<!--设置存档archive的style-->
+<style type="text/css">
+    .archive{list-style:none;line-height:28px;}
+    .archive h3{margin:0.5em 0;}
+    .archive time{float:left;font-size:14px;color:#999999;margin-right:1.2em;}
+</style>
+<div class="container marketing">
+    <div class="row">
+        <p class="info">
+            <br />
+            <br />
+            <br />
+            <br />
+        </p>
+    </div><!-- /.row -->
+    <div class="row-fluid">
+        <div class="span3">
+        </div>
+        <div class="span6">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <!--54wall-->
+                <ul class="archive">
+                    <% var lastYear = 0 %>
+                    <% posts.forEach(function (post, index) { %>
+                    <% if (lastYear != post.time.year) { %>
+                    <li><h3><%= post.time.year %></h3></li>
+                    <% lastYear=post.time.year } %>
+                    <li><time><%= post.time.day %></time></li>
+                    <!-- 这里我们通过在模版中设置一个 lastYear 变量判断是否和上次已经显示的年份相同，相同则不再显示年份，不同则显示。-->
+                    <li><a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></li>
+                    <% }) %>
+                </ul>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+        <div class="span3">
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2013 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+
+</div><!-- /.container -->
+
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="bootstrap/carousel/jquery.js"></script>
+<script src="bootstrap/carousel/bootstrap-transition.js"></script>
+<script src="bootstrap/carousel/bootstrap-alert.js"></script>
+<script src="bootstrap/carousel/bootstrap-modal.js"></script>
+<script src="bootstrap/carousel/bootstrap-dropdown.js"></script>
+<script src="bootstrap/carousel/bootstrap-scrollspy.js"></script>
+<script src="bootstrap/carousel/bootstrap-tab.js"></script>
+<script src="bootstrap/carousel/bootstrap-tooltip.js"></script>
+<script src="bootstrap/carousel/bootstrap-popover.js"></script>
+<script src="bootstrap/carousel/bootstrap-button.js"></script>
+<script src="bootstrap/carousel/bootstrap-collapse.js"></script>
+<script src="bootstrap/carousel/bootstrap-carousel.js"></script>
+<script src="bootstrap/carousel/bootstrap-typeahead.js"></script>
+<script>
+    !function ($) {
+        $(function(){
+            // carousel demo
+            $('#myCarousel').carousel()
+        })
+    }(window.jQuery)
+</script>
+<script src="bootstrap/carousel/holder.js"></script>
+</body>
+</html>

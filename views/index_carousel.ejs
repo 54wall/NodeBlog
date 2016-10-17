@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Carousel Template &middot; Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <style type="text/css">body{background:#99FF00 src:"images/sanye.jpg" no-repeat fixed 40px 100px} </style>
+    <!-- Le styles -->
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <style>
+
+    /* GLOBAL STYLES
+    -------------------------------------------------- */
+    /* Padding below the footer and lighter body text */
+
+    body {
+      padding-bottom: 40px;
+      color: #5a5a5a;
+    }
+
+
+
+    /* CUSTOMIZE THE NAVBAR
+    -------------------------------------------------- */
+
+    /* Special class on .container surrounding .navbar, used for positioning it into place. */
+    .navbar-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      margin-top: 20px;
+      margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+    }
+    .navbar-wrapper .navbar {
+
+    }
+
+    /* Remove border and change up box shadow for more contrast */
+    .navbar .navbar-inner {
+      border: 0;
+      -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+         -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
+              box-shadow: 0 2px 10px rgba(0,0,0,.25);
+    }
+
+    /* Downsize the brand/project name a bit */
+    .navbar .brand {
+      padding: 14px 20px 16px; /* Increase vertical padding to match navbar links */
+      font-size: 16px;
+      font-weight: bold;
+      text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+    /* Navbar links: increase padding for taller navbar */
+    .navbar .nav > li > a {
+      padding: 15px 20px;
+    }
+
+    /* Offset the responsive button for proper vertical alignment */
+    .navbar .btn-navbar {
+      margin-top: 10px;
+    }
+
+
+
+    /* CUSTOMIZE THE CAROUSEL
+    -------------------------------------------------- */
+
+    /* Carousel base class */
+    .carousel {
+      margin-bottom: 60px;
+    }
+
+    .carousel .container {
+      position: relative;
+      z-index: 9;
+    }
+
+    .carousel-control {
+      height: 80px;
+      margin-top: 0;
+      font-size: 120px;
+      text-shadow: 0 1px 1px rgba(0,0,0,.4);
+      background-color: transparent;
+      border: 0;
+      z-index: 10;
+    }
+
+    .carousel .item {
+      height: 500px;
+    }
+    .carousel img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      height: 500px;
+    }
+
+    .carousel-caption {
+      background-color: transparent;
+      position: static;
+      max-width: 550px;
+      padding: 0 20px;
+      margin-top: 200px;
+    }
+    .carousel-caption h1,
+    .carousel-caption .lead {
+      margin: 0;
+      line-height: 1.25;
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(0,0,0,.4);
+    }
+    .carousel-caption .btn {
+      margin-top: 10px;
+    }
+
+
+
+    /* MARKETING CONTENT
+    -------------------------------------------------- */
+
+    /* Center align the text within the three columns below the carousel */
+    .marketing .span4 {
+      text-align: center;
+    }
+    .marketing h2 {
+      font-weight: normal;
+    }
+    .marketing .span4 p {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+
+    /* Featurettes
+    ------------------------- */
+
+    .featurette-divider {
+      margin: 80px 0; /* Space out the Bootstrap <hr> more */
+    }
+    .featurette {
+      padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
+      overflow: hidden; /* Vertically center images part 2: clear their floats. */
+    }
+    .featurette-image {
+      margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+    }
+
+    /* Give some space on the sides of the floated elements so text doesn't run right into it. */
+    .featurette-image.pull-left {
+      margin-right: 40px;
+    }
+    .featurette-image.pull-right {
+      margin-left: 40px;
+    }
+
+    /* Thin out the marketing headings */
+    .featurette-heading {
+      font-size: 50px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+
+
+    /* RESPONSIVE CSS
+    -------------------------------------------------- */
+
+    @media (max-width: 979px) {
+
+      .container.navbar-wrapper {
+        margin-bottom: 0;
+        width: auto;
+      }
+      .navbar-inner {
+        border-radius: 0;
+        margin: -20px 0;
+      }
+
+      .carousel .item {
+        height: 500px;
+      }
+      .carousel img {
+        width: auto;
+        height: 500px;
+      }
+
+      .featurette {
+        height: auto;
+        padding: 0;
+      }
+      .featurette-image.pull-left,
+      .featurette-image.pull-right {
+        display: block;
+        float: none;
+        max-width: 40%;
+        margin: 0 auto 20px;
+      }
+    }
+
+
+    @media (max-width: 767px) {
+
+      .navbar-inner {
+        margin: -20px;
+      }
+
+      .carousel {
+        margin-left: -20px;
+        margin-right: -20px;
+      }
+      .carousel .container {
+
+      }
+      .carousel .item {
+        height: 300px;
+      }
+      .carousel img {
+        height: 300px;
+      }
+      .carousel-caption {
+        width: 65%;
+        padding: 0 70px;
+        margin-top: 100px;
+      }
+      .carousel-caption h1 {
+        font-size: 30px;
+      }
+      .carousel-caption .lead,
+      .carousel-caption .btn {
+        font-size: 18px;
+      }
+
+      .marketing .span4 + .span4 {
+        margin-top: 40px;
+      }
+
+      .featurette-heading {
+        font-size: 30px;
+      }
+      .featurette .lead {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+    }
+    </style>
+    <style type="text/css">
+      .wall_bg {
+        /*编译不过当时运行没有问题，灰色*/
+        background:#000000 url(images/sanye.jpg) no-repeat fixed
+      }
+      .wall_not_bg {
+        /*编译不过当时运行没有问题*/
+        background:#FFFFFF
+      }
+      .tag{background-color:#ff0000;border-radius:3px;font-size:14px;color:#ffffff;display:inline-block;padding:0 5px;margin-bottom:8px;}
+      .tag:hover{text-decoration:none;background-color:#ffffff;color:#000000;-webkit-transition:color .2s linear;}
+
+    </style>
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  </head>
+
+  <body class="wall_bg">
+
+
+
+    <!-- NAVBAR
+    ================================================== -->
+    <div class="navbar-wrapper">
+      <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
+      <div class="container">
+
+        <div class="navbar navbar-inverse">
+          <div class="navbar-inner">
+            <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="/">TheWalkingDead</a>
+            <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+            <div class="nav-collapse collapse">
+              <ul class="nav">
+                <li class="active"><a href="/">主页</a></li>
+                <li><a href="/post">新增内容</a></li>
+                <li><a href="/news">行尸走闻</a></li>
+                <li><a href="/roles">角色介绍</a></li>
+                <li><a href="/review">评行尸走肉</a></li>
+                <!--<li><a href="/upload">上传</a></li>-->
+                <!--<li><a href="/logout">注销</a></li>-->
+                <!--<li><a href="/login">登录</a></li>-->
+                <!--<li><a href="/reg">注册</a></li>-->
+                <!--<li><a href="/archive">文章列表</a></li>-->
+                <!--<li><a href="/tags">标签</a></li>-->
+
+                <!-- Read about Bootstrap dropdowns at http://twbs.github.com/bootstrap/javascript.html#dropdowns -->
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">登录及其他 <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/login">登录</a></li>
+                    <li><a href="/reg">注册</a></li>
+                    <li><a href="/upload">上传</a></li>
+                    <li><a href="/logout">注销</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">其他</li>
+                    <li><a href="/archive">文章列表</a></li>
+                    <li><a href="/tags">标签</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div><!-- /.navbar-inner -->
+        </div><!-- /.navbar -->
+
+      </div> <!-- /.container -->
+    </div><!-- /.navbar-wrapper -->
+
+
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="images/slide-01.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>行尸走肉众生相</h1>
+              <p class="lead">剧中人物与现实社会的映射</p>
+              <a class="btn btn-large btn-primary" href="#">了解详情</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="images/slide-02.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>尼根究竟有多厉害</h1>
+              <p class="lead">主创亮相纽约漫展 称总督与尼根比只是小喽啰</p>
+              <a class="btn btn-large btn-primary" href="/u/昨夜西风凋碧树/2016-10-17/《行尸走肉》尼根究竟有多厉害？">了解详情</a>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src="images/slide-03.jpg" alt="">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>行尸的世界，人的江湖</h1>
+              <!-- http://movie.mtime.com/127997/reviews/7773789.html-->
+              <p class="lead">在旅途的过程中，实现人性的自我剖析，自我拯救，自我牺牲，甚至自我沉沦。</p>
+              <a class="btn btn-large btn-primary" href="/u/昨夜西风凋碧树/2016-10-17/《行尸走肉》：行尸的世界，人的江湖">了解详情</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div><!-- /.carousel -->
+
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing" >
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <!--<div class="span4">-->
+          <!--<img class="img-circle" src="images\WalkingDead\person\瑞克·格莱姆斯.jpg">-->
+          <!--<h2>瑞克·格莱姆斯</h2>-->
+          <!--<p>小镇的副警长。尽管在越来越严峻的环境中，瑞克仍努力对每个人都坚持对他的道德准则。他曾对达里尔说：“我们不能杀死还活着的人，”之后只有在“这些活着的人试图杀死我们”时，瑞克才会违法自己的准则。作为团体的实际领导者，瑞克时刻保护每个人的安全，并为他们寻找安全场所。</p>-->
+          <!--<p><a class="btn" href="#">View details &raquo;</a></p>-->
+        <!--</div>&lt;!&ndash; /.span4 &ndash;&gt;-->
+        <!--<div class="span4">-->
+          <!--<img class="img-circle" src="images\WalkingDead\person\达里尔.jpg">-->
+          <!--<h2>达里尔</h2>-->
+          <!--<p>达里尔是一个追踪者，他也非常熟练于野外生存。瑞克第一次见到达里尔时，是在他将达里尔的哥哥莫尔迪克逊丢在了亚特兰大后。达里尔坚持要回去找他哥哥，但是他们返回后并没有找到莫尔。达里尔没有莫尔恃强凌弱的坏榜样，他摆脱了哥哥所造成的阴影并且同其他生还者建立了友谊。</p>-->
+          <!--<p><a class="btn" href="#">View details &raquo;</a></p>-->
+        <!--</div>&lt;!&ndash; /.span4 &ndash;&gt;-->
+        <!--<div class="span4">-->
+          <!--<img class="img-circle" src="images\WalkingDead\person\格伦.jpg">-->
+          <!--<h2>格伦</h2>-->
+          <!--<p>格伦在一次例行到亚特兰大收集补给的过程中遇到了瑞克。在目击了瑞克被行尸攻击后，他通过无线电指导瑞克找到安全路线。格伦过去靠送披萨的生活经历，以及他对小路的了解程度，加上他的灵敏与无畏意识，都证明他非常有助与团队转移。当瑞克将他介绍给赫谢尔的女儿玛姬时说，格伦是“我们的进城专家。</p>-->
+          <!--<p><a class="btn" href="#">View details &raquo;</a></p>-->
+        <!--</div>&lt;!&ndash; /.span4 &ndash;&gt;-->
+      </div><!-- /.row -->
+      <div class="row-fluid" >
+        <div class="span8">
+
+          <div class="tabbable" id="tabs-211555">
+            <ul class="nav nav-tabs">
+              <li>
+                <a href="#panel-1" data-toggle="tab">基本信息</a>
+              </li>
+              <li class="active">
+                <a href="#panel-2" data-toggle="tab">获奖记录</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane" id="panel-1">
+                <p>
+                  《行尸走肉》是一部由弗兰克·德拉邦特执导的美国恐怖电视系列剧，安德鲁·林肯、诺曼·瑞杜斯、劳伦·科汉、史蒂文·元等主演。改编自同名漫画，该剧于2010年10月31日在AMC有线电视网开播，是电视史上第一部正宗的丧尸电视剧。
+                  该剧主要讲述的是主人公瑞克是亚特兰大城郊一座小镇的副警长。在执行公务的过程中，瑞克遭到枪击，伤势严重，被人紧急送往当地医院进行抢救。当瑞克醒来之后发现，世界已经丧尸蔓延、危机四伏的。
+                  类型 冒险，剧情，恐怖，惊悚，感情
+                  导演弗兰克·德拉邦特
+                  中文名 行尸走肉
+                  外文名 The Walking Dead
+                </p>
+              </div>
+              <div class="tab-pane active" id="panel-2">
+                <p>
+                  获奖记录
+                </p>
+                <table class="table table-hover">
+                  <thead>
+                  <tr>
+                    <th>
+                      时间及奖项
+                    </th>
+                    <th>
+                      名称
+                    </th>
+                    <th>
+                      获奖者
+                    </th>
+                    <th>
+                      类型
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>
+                      <div class="row-fluid">
+                        <div class="span4">
+                          第63届艾美奖
+                        </div>
+                        <div class="span4">
+                          第63届艾美奖
+                        </div>
+                        <div class="span4">
+                          第63届艾美奖
+                        </div>
+                      </div>
+                      第63届艾美奖
+                    </td>
+                    </td>
+                    <td>
+                      TB - Monthly
+                    </td>
+                    <td>
+                      01/04/2012
+                    </td>
+                    <td>
+                      Default
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      1
+                    </td>
+                    <td>
+                      TB - Monthly
+                    </td>
+                    <td>
+                      01/04/2012
+                    </td>
+                    <td>
+                      Approved
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      2
+                    </td>
+                    <td>
+                      TB - Monthly
+                    </td>
+                    <td>
+                      02/04/2012
+                    </td>
+                    <td>
+                      Declined
+                    </td>
+                  </tr>
+                  <tr >
+                    <td>
+                      3
+                    </td>
+                    <td>
+                      TB - Monthly
+                    </td>
+                    <td>
+                      03/04/2012
+                    </td>
+                    <td>
+                      Pending
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      4
+                    </td>
+                    <td>
+                      TB - Monthly
+                    </td>
+                    <td>
+                      04/04/2012
+                    </td>
+                    <td>
+                      Call in to confirm
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!--开始博客列表-->
+          <% posts.forEach(function (post, index) { %>
+          <p>
+          <h2>
+            <a href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">
+              <%= post.title %>
+            </a>
+          </h2>
+
+          </p>
+          <p class="info">
+            作者：<a href="u/<%= post.name %>"><%= post.name %></a> |
+            日期：<%= post.time.minute %>
+            标签：
+            <% post.tags.forEach(function (tag, index) { %>
+            <% if (tag) { %>
+            <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
+            <% } %>
+            <% }) %>
+          </p>
+
+          <%if (post.post.length > 300) {
+            post.post = post.post.substring(0,300);
+            post.post = post.post + ' ...';
+
+          }%>
+          <%- post.post %>
+          <p><a class="btn btn-success" href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">View details &raquo;</a></p>
+          <% }) %>
+          <%- include paging %>
+        </div>
+        <div class="span4">
+          <!--<img class="img-circle" src="images\WalkingDead\54wall.png">-->
+          <!--<h2>关于我</h2>-->
+          <!--<p>最近在试玩node.js,很喜欢行尸走肉，所以做了这个多人博客，套上了行尸的外皮。</p>-->
+           <!--<p><a class="btn" href="#">View details &raquo;</a></p>-->
+          <img class="img-circle" src="images\WalkingDead\person\瑞克·格莱姆斯.jpg">
+          <h2>瑞克·格莱姆斯</h2>
+          <p>小镇的副警长。尽管在越来越严峻的环境中，瑞克仍努力对每个人都坚持对他的道德准则。他曾对达里尔说：“我们不能杀死还活着的人，”之后只有在“这些活着的人试图杀死我们”时，瑞克才会违法自己的准则。作为团体的实际领导者，瑞克时刻保护每个人的安全，并为他们寻找安全场所。</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <img class="img-circle" src="images\WalkingDead\person\达里尔.jpg">
+          <h2>达里尔</h2>
+          <p>达里尔是一个追踪者，他也非常熟练于野外生存。瑞克第一次见到达里尔时，是在他将达里尔的哥哥莫尔迪克逊丢在了亚特兰大后。达里尔坚持要回去找他哥哥，但是他们返回后并没有找到莫尔。达里尔没有莫尔恃强凌弱的坏榜样，他摆脱了哥哥所造成的阴影并且同其他生还者建立了友谊。</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <img class="img-circle" src="images\WalkingDead\person\格伦.jpg">
+          <h2>格伦</h2>
+          <p>格伦在一次例行到亚特兰大收集补给的过程中遇到了瑞克。在目击了瑞克被行尸攻击后，他通过无线电指导瑞克找到安全路线。格伦过去靠送披萨的生活经历，以及他对小路的了解程度，加上他的灵敏与无畏意识，都证明他非常有助与团队转移。当瑞克将他介绍给赫谢尔的女儿玛姬时说，格伦是“我们的进城专家。</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+      </div>
+      <!-- START THE FEATURETTES -->
+      <hr class="featurette-divider">
+      <div class="featurette">
+        <img class="featurette-image pull-right" src="images\WalkingDead\poster\s1.jpg">
+        <h2 class="featurette-heading">行尸走肉<span class="muted">第一季</span></h2>
+        <p class="lead">《行尸走肉》主人公Rick是亚特兰大城郊一座小镇的副警长。在一次与队友Shane执行公务的过程中，Rick遭到枪击，伤势严重，被人紧急送往当地医院进行抢救。当Rick醒来之后，发现医院里已经空无一人，而在医院之外也已经是满地狼藉。原来在他昏迷期间人类正在经历“丧尸瘟疫”的浩劫，Rick不仅在寻找家人与结识新队友的途中经历着亲情、人性和原有社会准则等的考验，也在自我迷失中不断找寻自我，并引领着“避难逃亡”中的队友们在陷落于丧尸的社会中苦苦求生，向着似乎毫无希望的明天艰难进发。</p>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!--<div class="featurette">-->
+        <!--<img class="featurette-image pull-left" src="bootstrap/carousel/browser-icon-firefox.png">-->
+        <!--<h2 class="featurette-heading">Oh yeah, it's that good. <span class="muted">See for yourself.</span></h2>-->
+        <!--<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>-->
+      <!--</div>-->
+
+      <!--<hr class="featurette-divider">-->
+
+      <!--<div class="featurette">-->
+        <!--<img class="featurette-image pull-right" src="bootstrap/carousel/browser-icon-safari.png">-->
+        <!--<h2 class="featurette-heading">And lastly, this one. <span class="muted">Checkmate.</span></h2>-->
+        <!--<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>-->
+      <!--</div>-->
+
+      <!--<hr class="featurette-divider">-->
+
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2013 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="bootstrap/carousel/jquery.js"></script>
+    <script src="bootstrap/carousel/bootstrap-transition.js"></script>
+    <script src="bootstrap/carousel/bootstrap-alert.js"></script>
+    <script src="bootstrap/carousel/bootstrap-modal.js"></script>
+    <script src="bootstrap/carousel/bootstrap-dropdown.js"></script>
+    <script src="bootstrap/carousel/bootstrap-scrollspy.js"></script>
+    <script src="bootstrap/carousel/bootstrap-tab.js"></script>
+    <script src="bootstrap/carousel/bootstrap-tooltip.js"></script>
+    <script src="bootstrap/carousel/bootstrap-popover.js"></script>
+    <script src="bootstrap/carousel/bootstrap-button.js"></script>
+    <script src="bootstrap/carousel/bootstrap-collapse.js"></script>
+    <script src="bootstrap/carousel/bootstrap-carousel.js"></script>
+    <script src="bootstrap/carousel/bootstrap-typeahead.js"></script>
+    <script>
+      !function ($) {
+        $(function(){
+          // carousel demo
+          $('#myCarousel').carousel()
+        })
+      }(window.jQuery)
+    </script>
+    <script src="bootstrap/carousel/holder.js"></script>
+  </body>
+</html>

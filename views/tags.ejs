@@ -1,0 +1,59 @@
+<%- include header_carousel.ejs %>
+<!--style全部在header_carousel.ejs中-->
+<div class="container marketing wall_bg">
+    <div class="row">
+        <p class="info">
+            <br />
+            <br />
+            <br />
+            <br />
+        </p>
+    </div><!-- /.row -->
+    <div class="row-fluid">
+        <div class="span2">
+        </div>
+        <div class="span8 wall_bg">
+            <% posts.forEach(function (tag, index) { %>
+            <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
+            <% }) %>
+        </div>
+        <div class="span2">
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2013 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+
+</div><!-- /.container -->
+
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="bootstrap/carousel/jquery.js"></script>
+<script src="bootstrap/carousel/bootstrap-transition.js"></script>
+<script src="bootstrap/carousel/bootstrap-alert.js"></script>
+<script src="bootstrap/carousel/bootstrap-modal.js"></script>
+<script src="bootstrap/carousel/bootstrap-dropdown.js"></script>
+<script src="bootstrap/carousel/bootstrap-scrollspy.js"></script>
+<script src="bootstrap/carousel/bootstrap-tab.js"></script>
+<script src="bootstrap/carousel/bootstrap-tooltip.js"></script>
+<script src="bootstrap/carousel/bootstrap-popover.js"></script>
+<script src="bootstrap/carousel/bootstrap-button.js"></script>
+<script src="bootstrap/carousel/bootstrap-collapse.js"></script>
+<script src="bootstrap/carousel/bootstrap-carousel.js"></script>
+<script src="bootstrap/carousel/bootstrap-typeahead.js"></script>
+<script>
+    !function ($) {
+        $(function(){
+            // carousel demo
+            $('#myCarousel').carousel()
+        })
+    }(window.jQuery)
+</script>
+<script src="bootstrap/carousel/holder.js"></script>
+</body>
+</html>

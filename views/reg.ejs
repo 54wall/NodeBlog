@@ -1,0 +1,74 @@
+<%- include header_carousel.ejs %>
+<div class="container marketing">
+    <div class="row">
+        <p class="info">
+            <br />
+            <br />
+            <br />
+            <br />
+        </p>
+    </div><!-- /.row -->
+    <div class="row-fluid">
+        <div class="span3">
+        </div>
+        <div class="span6">
+            <div class="span2">
+            </div>
+            <div class="span8">
+                <!--54wall-->
+                <form method="post">
+                    <!--用户名：  <input type="text" name="name"/><br />-->
+                    <!--密码：    <input type="password" name="password"/><br />-->
+                    <!--确认密码：<input type="password" name="password-repeat"/><br />-->
+                    <!--邮箱：    <input type="email" name="email"/><br />-->
+                    <!--<input type="submit" value="注册"/>-->
+                    <input type="text" name="name" class="input-block-level" placeholder="用户名">
+                    <input type="password" name="password" class="input-block-level" placeholder="密码">
+                    <input type="password" name="password-repeat" class="input-block-level" placeholder="确认密码">
+                    <input type="email" name="email" class="input-block-level" placeholder="邮箱地址">
+                    <label class="checkbox">
+                        <input type="checkbox" value="remember-me"> 记住我
+                    </label>
+                    <button class="btn btn-large btn-primary" type="submit">注册</button>
+                </form>
+            </div>
+            <div class="span2">
+            </div>
+        </div>
+        <div class="span3">
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2013 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+
+</div><!-- /.container -->
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="bootstrap/carousel/jquery.js"></script>
+<script src="bootstrap/carousel/bootstrap-transition.js"></script>
+<script src="bootstrap/carousel/bootstrap-alert.js"></script>
+<script src="bootstrap/carousel/bootstrap-modal.js"></script>
+<script src="bootstrap/carousel/bootstrap-dropdown.js"></script>
+<script src="bootstrap/carousel/bootstrap-scrollspy.js"></script>
+<script src="bootstrap/carousel/bootstrap-tab.js"></script>
+<script src="bootstrap/carousel/bootstrap-tooltip.js"></script>
+<script src="bootstrap/carousel/bootstrap-popover.js"></script>
+<script src="bootstrap/carousel/bootstrap-button.js"></script>
+<script src="bootstrap/carousel/bootstrap-collapse.js"></script>
+<script src="bootstrap/carousel/bootstrap-carousel.js"></script>
+<script src="bootstrap/carousel/bootstrap-typeahead.js"></script>
+<script>
+    !function ($) {
+        $(function(){
+            // carousel demo
+            $('#myCarousel').carousel()
+        })
+    }(window.jQuery)
+</script>
+<script src="bootstrap/carousel/holder.js"></script>
+</body>
+</html>

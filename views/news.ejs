@@ -1,0 +1,103 @@
+<%- include header_carousel.ejs %>
+<style type="text/css">
+    .comments {
+        width:100%;/*自动适应父布局宽度*/
+        overflow:auto;
+        word-break:break-all;
+        /*在ie中解决断行问题(防止自动变为在一行显示，主要解决ie兼容问题，ie8中当设宽度为100%时，文本域类容超过一行时，
+        当我们双击文本内容就会自动变为一行显示，所以只能用ie的专有断行属性“word-break或word-wrap”控制其断行)*/
+
+    }
+    .wall_bg {
+        /*编译不过当时运行没有问题，灰色*/
+        background:#000000 url(images/sanye.jpg) no-repeat fixed
+    }
+    .wall_not_bg {
+        /*编译不过当时运行没有问题*/
+        background:#FFFFFF
+    }
+</style>
+<div class="container marketing wall_bg">
+    <div class="row">
+        <p class="info">
+            <br />
+            <br />
+            <br />
+            <br />
+        </p>
+    </div><!-- /.row -->
+    <div class="row-fluid">
+        <div class="span2">
+        </div>
+        <div class="span8">
+            <!--开始博客列表-->
+            <% posts.forEach(function (post, index) { %>
+            <p>
+            <h2>
+                <a href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">
+                    <%= post.title %>
+                </a>
+            </h2>
+
+            </p>
+            <p class="info">
+                作者：<a href="u/<%= post.name %>"><%= post.name %></a> |
+                日期：<%= post.time.minute %>
+                标签：
+                <% post.tags.forEach(function (tag, index) { %>
+                <% if (tag) { %>
+                <a class="tag" href="/tags/<%= tag %>"><%= tag %></a>
+                <% } %>
+                <% }) %>
+            </p>
+
+            <%if (post.post.length > 300) {
+                post.post = post.post.substring(0,300);
+                post.post = post.post + ' ...';
+
+            }%>
+            <%- post.post %>
+            <p><a class="btn btn-success" href="u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">View details &raquo;</a></p>
+            <% }) %>
+            <%- include paging %>
+        </div>
+        <div class="span2">
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2013 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+
+</div><!-- /.container -->
+
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="bootstrap/carousel/jquery.js"></script>
+<script src="bootstrap/carousel/bootstrap-transition.js"></script>
+<script src="bootstrap/carousel/bootstrap-alert.js"></script>
+<script src="bootstrap/carousel/bootstrap-modal.js"></script>
+<script src="bootstrap/carousel/bootstrap-dropdown.js"></script>
+<script src="bootstrap/carousel/bootstrap-scrollspy.js"></script>
+<script src="bootstrap/carousel/bootstrap-tab.js"></script>
+<script src="bootstrap/carousel/bootstrap-tooltip.js"></script>
+<script src="bootstrap/carousel/bootstrap-popover.js"></script>
+<script src="bootstrap/carousel/bootstrap-button.js"></script>
+<script src="bootstrap/carousel/bootstrap-collapse.js"></script>
+<script src="bootstrap/carousel/bootstrap-carousel.js"></script>
+<script src="bootstrap/carousel/bootstrap-typeahead.js"></script>
+<script>
+    !function ($) {
+        $(function(){
+            // carousel demo
+            $('#myCarousel').carousel()
+        })
+    }(window.jQuery)
+</script>
+<script src="bootstrap/carousel/holder.js"></script>
+</body>
+</html>
