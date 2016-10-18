@@ -4,3 +4,15 @@
 完整项目已经部署到<a href="https://dashboard.heroku.com/">Heroku</a>。
 完整项目请浏览
 <a href="https://my-walkingdead.herokuapp.com/">54wall-WalkingDead</a>。
+
+桌面01
+
+![桌面01](https://github.com/54wall/N-blog-WalkingDead/blob/master/readme_resouce/N-Blog-WalkingDeading_01.jpg)
+
+桌面02
+
+![桌面02](https://github.com/54wall/N-blog-WalkingDead/blob/master/readme_resouce/N-Blog-WalkingDeading_02.jpg)
+
+手机端03
+
+![手机端03](https://github.com/54wall/N-blog-WalkingDead/blob/master/readme_resouce/N-Blog-WalkingDeading_03.jpg)
