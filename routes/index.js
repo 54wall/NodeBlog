@@ -477,7 +477,7 @@ module.exports = function(app) {
         //console.log("roles");
         //console.log(total);
 
-        res.render('index_carousel', {
+        res.render('roles', {
           title: '主页',
           posts: posts,
           page: page,

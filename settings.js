@@ -1,6 +1,4 @@
 module.exports = {
     cookieSecret: 'myblog',
-    db: 'blog',
-    host: 'localhost',
-    port: 27017
+    url: 'mongodb://54wall:3qmlab@ds015869.mlab.com:15869/walkingdead'
 };

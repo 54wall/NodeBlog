@@ -1,5 +1,8 @@
-var mongodb = require('./db'),
+//旧版本已经停用，注意版本更新
+//var mongodb = require('mongodb').Db,
+var settings = require('../settings'),
     markdown = require('markdown').markdown;
+var mongodb = require('mongodb');
 //开始漏了function Post(name, title, post,tags)中的tags,直接报错tags is not defined,修改后注意清空数据库重新加载，不然会报ejs页面无法返回的错误
 function Post(name, title,tags, post) {
     this.name = name;
@@ -15,14 +18,16 @@ module.exports = Post;
 //一次获取十篇文章
 Post.getTen = function(name, page, callback) {
     //打开数据库
-    mongodb.open(function (err, db) {
+    //TypeError: mongodb.MongoClient.connect is not a function
+    //Cannot read property 'connect' of undefined
+    mongodb.MongoClient.connect(settings.url, function (err, db) {
         if (err) {
             return callback(err);
         }
         //读取 posts 集合
         db.collection('posts', function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             var query = {};
@@ -38,7 +43,7 @@ Post.getTen = function(name, page, callback) {
                 }).sort({
                     time: -1
                 }).toArray(function (err, docs) {
-                    mongodb.close();
+                    db.close();
                     if (err) {
                         return callback(err);
                     }
@@ -54,13 +59,13 @@ Post.getTen = function(name, page, callback) {
 };
 //返回某一标签全部文章，返回的post包含全部时间内容评论等数据
 Post.getAllTag = function(tag, callback) {
-    mongodb.open(function (err, db) {
+    mongodb.MongoClient.connect(settings.url, function (err, db) {
         if (err) {
             return callback(err);
         }
         db.collection('posts', function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             //查询所有 tags 数组内包含 tag 的文档
@@ -77,7 +82,7 @@ Post.getAllTag = function(tag, callback) {
             }).sort({
                 time: -1
             }).toArray(function (err, docs) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);
                 }
@@ -92,13 +97,13 @@ Post.getAllTag = function(tag, callback) {
 };
 /*这个仅返回标签个数*/
 Post.getTagNum = function(tag, callback) {
-    mongodb.open(function (err, db) {
+    mongodb.MongoClient.connect(settings.url, function (err, db) {
         if (err) {
             return callback(err);
         }
         db.collection('posts', function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             //查询所有 tags 数组内包含 tag 的文档
@@ -109,7 +114,7 @@ Post.getTagNum = function(tag, callback) {
             }).sort({
                 time: -1
             }).toArray(function (err, docs) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);
                 }
@@ -120,13 +125,13 @@ Post.getTagNum = function(tag, callback) {
 };
 
 Post.getTenTag = function(tag,page, callback) {
-    mongodb.open(function (err, db) {
+    mongodb.MongoClient.connect(settings.url, function (err, db) {
         if (err) {
             return callback(err);
         }
         db.collection('posts', function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             //查询所有 tags 数组内包含 tag 的文档
@@ -146,7 +151,7 @@ Post.getTenTag = function(tag,page, callback) {
                 }).sort({
                     time: -1
                 }).toArray(function (err, docs) {
-                    mongodb.close();
+                    db.close();
                     if (err) {
                         return callback(err);
                     }
@@ -182,21 +187,21 @@ Post.prototype.save = function(callback) {
         comments: []
     };
     //打开数据库
-    mongodb.open(function (err, db) {
+    mongodb.MongoClient.connect(settings.url, function (err, db) {
         if (err) {
             return callback(err);
         }
         //读取 posts 集合
         db.collection('posts', function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             //将文档插入 posts 集合
             collection.insert(post, {
                 safe: true
             }, function (err) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);//失败！返回 err
                 }
@@ -210,14 +215,14 @@ Post.prototype.save = function(callback) {
 //Post.getAll = function(name, callback) {
 //
 //    //打开数据库
-//    mongodb.open(function (err, db) {
+//    mongodb.MongoClient.connect(settings.url, function (err, db) {
 //        if (err) {
 //            return callback(err);
 //        }
 //        //读取 posts 集合
 //        db.collection('posts', function(err, collection) {
 //            if (err) {
-//                mongodb.close();
+//                db.close();
 //                return callback(err);
 //            }
 //            var query = {};
@@ -228,7 +233,7 @@ Post.prototype.save = function(callback) {
 //            collection.find(query).sort({
 //                time: -1
 //            }).toArray(function (err, docs) {
-//                mongodb.close();
+//                db.close();
 //                if (err) {
 //                    return callback(err);//失败！返回 err
 //                }
@@ -250,14 +255,14 @@ Post.prototype.save = function(callback) {
 //获取一篇文章
 Post.getOne = function(name, day, title, callback) {
     //打开数据库
-    mongodb.open(function (err, db) {
+    mongodb.MongoClient.connect(settings.url, function (err, db) {
         if (err) {
             return callback(err);
         }
         //读取 posts 集合
         db.collection('posts', function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             //根据用户名、发表日期及文章名进行查询
@@ -266,7 +271,7 @@ Post.getOne = function(name, day, title, callback) {
                 "time.day": day,
                 "title": title
             }, function (err, doc) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);
                 }
@@ -280,14 +285,14 @@ Post.getOne = function(name, day, title, callback) {
 //返回原始发表的内容（markdown 格式）
 Post.edit = function(name, day, title, callback) {
     //打开数据库
-    mongodb.open(function (err, db) {
+    mongodb.MongoClient.connect(settings.url, function (err, db) {
         if (err) {
             return callback(err);
         }
         //读取 posts 集合
         db.collection('posts', function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             //根据用户名、发表日期及文章名进行查询
@@ -296,7 +301,7 @@ Post.edit = function(name, day, title, callback) {
                 "time.day": day,
                 "title": title
             }, function (err, doc) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);
                 }
@@ -308,14 +313,14 @@ Post.edit = function(name, day, title, callback) {
 //更新一篇文章及其相关信息
 Post.update = function(name, day, title, post, callback) {
     //打开数据库
-    mongodb.open(function (err, db) {
+    mongodb.MongoClient.connect(settings.url, function (err, db) {
         if (err) {
             return callback(err);
         }
         //读取 posts 集合
         db.collection('posts', function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             //更新文章内容
@@ -326,7 +331,7 @@ Post.update = function(name, day, title, post, callback) {
             }, {
                 $set: {post: post}
             }, function (err) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);
                 }
@@ -338,14 +343,14 @@ Post.update = function(name, day, title, post, callback) {
 //删除一篇文章
 Post.remove = function(name, day, title, callback) {
     //打开数据库
-    mongodb.open(function (err, db) {
+    mongodb.MongoClient.connect(settings.url, function (err, db) {
         if (err) {
             return callback(err);
         }
         //读取 posts 集合
         db.collection('posts', function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             //根据用户名、日期和标题查找并删除一篇文章
@@ -356,7 +361,7 @@ Post.remove = function(name, day, title, callback) {
             }, {
                 w: 1
             }, function (err) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);
                 }
@@ -368,14 +373,14 @@ Post.remove = function(name, day, title, callback) {
 //返回所有文章存档信息 https://github.com/nswbmw/N-blog/wiki/第8章--增加存档页面
 Post.getArchive = function(callback) {
     //打开数据库
-    mongodb.open(function (err, db) {
+    mongodb.MongoClient.connect(settings.url, function (err, db) {
         if (err) {
             return callback(err);
         }
         //读取 posts 集合
         db.collection('posts', function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             //返回只包含 name、time、title 属性的文档组成的存档数组
@@ -386,7 +391,7 @@ Post.getArchive = function(callback) {
             }).sort({
                 time: -1
             }).toArray(function (err, docs) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);
                 }
@@ -397,18 +402,18 @@ Post.getArchive = function(callback) {
 };
 //返回所有标签
 Post.getTags = function(callback) {
-    mongodb.open(function (err, db) {
+    mongodb.MongoClient.connect(settings.url, function (err, db) {
         if (err) {
             return callback(err);
         }
         db.collection('posts', function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             //distinct 用来找出给定键的所有不同值
             collection.distinct("tags", function (err, docs) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);
                 }
@@ -420,13 +425,13 @@ Post.getTags = function(callback) {
 
 //返回含有特定标签的所有文章
 Post.getTag = function(tag, callback) {
-    mongodb.open(function (err, db) {
+    mongodb.MongoClient.connect(settings.url, function (err, db) {
         if (err) {
             return callback(err);
         }
         db.collection('posts', function (err, collection) {
             if (err) {
-                mongodb.close();
+                db.close();
                 return callback(err);
             }
             //查询所有 tags 数组内包含 tag 的文档
@@ -440,7 +445,7 @@ Post.getTag = function(tag, callback) {
             }).sort({
                 time: -1
             }).toArray(function (err, docs) {
-                mongodb.close();
+                db.close();
                 if (err) {
                     return callback(err);
                 }
