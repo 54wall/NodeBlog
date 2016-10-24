@@ -147,7 +147,8 @@ module.exports = function(app) {
     //含有标签
     var currentUser = req.session.user,
         tags = [req.body.tag1, req.body.tag2, req.body.tag3],
-        post = new Post(currentUser.name, req.body.title, tags, req.body.post);
+        showimg = req.body.showimg,
+        post = new Post(currentUser.name, req.body.title, tags,showimg, req.body.post);
     post.save(function (err) {
       if (err) {
         req.flash('error', err);
@@ -155,6 +156,7 @@ module.exports = function(app) {
       }
       req.flash('success', '发布成功!');
       res.redirect('/');//发表成功跳转到主页
+    });
     });
   });
 

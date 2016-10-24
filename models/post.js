@@ -4,13 +4,14 @@ var settings = require('../settings'),
     markdown = require('markdown').markdown;
 var mongodb = require('mongodb');
 //开始漏了function Post(name, title, post,tags)中的tags,直接报错tags is not defined,修改后注意清空数据库重新加载，不然会报ejs页面无法返回的错误
-function Post(name, title,tags, post) {
+function Post(name, title,tags,showimg, post) {
     this.name = name;
     this.title = title;
     //var post中没有变不会显示紫色，代表没有经过编译
 
     this.post = post;
     this.tags = tags;
+    this.showimg = showimg;
 }
 
 module.exports = Post;
@@ -182,6 +183,7 @@ Post.prototype.save = function(callback) {
         name: this.name,
         time: time,
         title: this.title,
+        showimg: this.showimg,
         tags: this.tags,
         post: this.post,
         comments: []
