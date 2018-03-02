@@ -1,31 +1,18 @@
-##N-blog-WalkingDead
+## 使用Heroku+Mlab，部署Node+Express+Bootsrap实现的多人博客
 使用Node+Express+Bootsrap实现的多人博客，参考github：<a href="https://github.com/nswbmw/N-blog">nswbmw/N-blog:使用 Express + MongoDB 搭建多人博客</a>.
 因为MongoHQ已经不再能使用，我的项目使用的是<a href="https://mlab.com">Mlab</a>。
 完整项目已经部署到<a href="https://dashboard.heroku.com/">Heroku</a>。
 完整项目请浏览
 <a href="https://my-walkingdead.herokuapp.com/">54wall-WalkingDead</a>。
-
-桌面01
-
-![桌面01](https://github.com/54wall/N-blog-WalkingDead/blob/master/readme_resouce/N-Blog-WalkingDeading_01.jpg)
-
-桌面02
-
-![桌面02](https://github.com/54wall/N-blog-WalkingDead/blob/master/readme_resouce/N-Blog-WalkingDeading_02.jpg)
-
-手机端03
-
-![手机端03](https://github.com/54wall/N-blog-WalkingDead/blob/master/readme_resouce/N-Blog-WalkingDeading_03.jpg)
-
 目前的问题是部署到Heroku上的对于未登陆用户，直接post新增内容，直接会报错，然后必须注册才不会报错，对于已经登陆的用户，则是如果选择注册选项，则也是报错，必须先登出logout！
-##使用Heroku+mLab 部署Node应用##
-###问题背景###
+## 使用Heroku+mLab 部署Node应用
+
 最近尝试了一下node.js，迷迷糊糊，不太懂，所以干脆找一个基于node.js平台的小项目做一下，我大概扫了一眼javascript的基础和node.js的介绍，然后在GitHub上找到了一个非常详实的项目：[nswbmw/N-blog](https://github.com/nswbmw/N-blog)，根据他的讲解，一步一步实现了多人博客的基础雏形，之后我使用Bootstrap进行了美化，做了一个关于行尸走肉的多人博客网页，利用标签的特性，实现了各个频道的检索。
 ![N-Blog-WalkingDeading_01.jpg](http://upload-images.jianshu.io/upload_images/2467798-3bb7ea73c1b71a1c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 真打算布置到nswbmw所使用的Heroku和MongoHQ，但是MongoHQ目前好像已经不能使用了，于是在网上找到了他的替代品[mLab](https://mlab.com/home),看了下相关的教程几乎和已经消失的MongoHQ的使用步骤是一致的，但是网上教程大多使用的Ubuntu系统，我这里使用的Windows,并且多数使用mongoose来进行MongoDB数据库操作，看的我云里雾里，正好刚刚部署成功。这里简单介绍下，使用[mLab](https://mlab.com/home)和[Heroku](https://www.heroku.com/)分别进行MongoDB和node部署的过程。
 这里还是参照[nswbmw/N-blog的wiki](https://github.com/nswbmw/N-blog/wiki/番外篇之——部署到-Heroku)上的例子的顺序，首先将本地MongoDB切换到mLab上。
 
-####使用mLab
+#### 使用mLab
 
 ![mLab登陆.jpg](http://upload-images.jianshu.io/upload_images/2467798-2b7f3ad316f736fb.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 SignUp注册，我使用的是网易126邮箱，可以进行申请，申请后需要发送一个确认的邮件，进入你的邮件去找到，然后访问返回的连接。
@@ -213,10 +200,10 @@ app.use(express.session({
 现在，无需启动你的mongo本地数据库，直接启动你的多人博客或者其他node应用，会比较慢，就可以看到了，像一起一样可以增加修改，而在mlab可以看到你的数据库。
 ![mLab数据库.jpg](http://upload-images.jianshu.io/upload_images/2467798-e6efedc2f25e8f01.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-## 部署到 Heroku ##
+## 部署到 Heroku
 
 Heroku 支持很多语言的部署，下面使用 Heroku 部署我们的博客。我这里完全没有安装Heroku Toolbelt，也没有用到git bash，直接全部在网页中执行。过程与nswbmw/N-blog稍有不同。
-### 新建Procfile ###
+### 新建Procfile
 
 在工程的根目录下新建一个 **Procfile** 文件，添加如下内容：
 ```
@@ -224,16 +211,18 @@ Heroku 支持很多语言的部署，下面使用 Heroku 部署我们的博客�
 ```
 **Procfile** 文件告诉了服务器该使用什么命令启动一个 web 服务，这里通过 `node app.js` 执行 Node 脚本。
 
-### 上传到github ###
+### 上传到github
 上传项目到github上，注意在硬盘上的node完整项目的目录如下：
 ![项目结构.jpg](http://upload-images.jianshu.io/upload_images/2467798-9155050c243ed5f1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 注意图中上边的文件夹时完整的，只需要上传下边的，上传到github时把bin和node_modules这两个文件夹除外，这两文件较大，不需要上传，bin是运行node时生成的，而node_modules则是运行node应用时下载的依赖。
 
-### 注册Heroku ###
+### 注册Heroku
 ![heroku首页.jpg](http://upload-images.jianshu.io/upload_images/2467798-9b13ddb3da297ebe.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 进入[Heroku](https://www.heroku.com/),注册注意我的126不能通过，qq倒是可以。
 
-### 创建一个应用 ###
+### 创建一个应用
 注册成功后，就进入了控制面板页面，如图所示：
 
 ![heroku新建app.jpg](http://upload-images.jianshu.io/upload_images/2467798-69c14e01bf399544.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
@@ -241,9 +230,11 @@ Heroku 支持很多语言的部署，下面使用 Heroku 部署我们的博客�
 点击 **New** ，填写独一无二的应用名称后，点击 **Create App** 即创建成功 。
 
 ![heroku新建app2.jpg](http://upload-images.jianshu.io/upload_images/2467798-b7c7d570c7cb9139.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 点击你的新建的这个app，然后选择deploy（部署）这一项，会遇到下边的
 
 ![heroku新建app3.jpg](http://upload-images.jianshu.io/upload_images/2467798-ee4b9c3fb5f1e51e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 因为项目已经上传到GitHub上，所以，直接选择GitHub，会进行相应的授权操作，然后在你的账户中选择你要部署的项目所在的GitHub路径，我这里是我的[N-blog-WalkingDead](https://github.com/54wall/N-blog-WalkingDead)
 
 下边仅跟着的就是两种部署方式：
@@ -255,10 +246,12 @@ Automatic deploys 就是自动部署，部署放生在更新你的GitHub，Herok
 这里在Manual deploy中进行直接部署，点击Show build log，就可以看到构建的日志了，若果node项目(我这里是多人博客项目)没有问题，就可以你就可以访问 **http://yourAppName.herokuapp.com/** 进行查看了。
 我的项目结果如下：
 ![N-Blog-WalkingDeading_02.jpg](http://upload-images.jianshu.io/upload_images/2467798-ada1c76d7b19899b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 手机端：
+
 ![N-Blog-WalkingDeading_03.jpg](http://upload-images.jianshu.io/upload_images/2467798-4b78a370ec34d255.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-####参考
+#### 参考
 [利用heroku+mongoLab 部署Node 运用](http://www.cnblogs.com/djlxs/p/5506403.html)
 [nswbmw/N-blog:番外篇之——部署到 Heroku](https://github.com/nswbmw/N-blog/wiki/番外篇之——部署到-Heroku)
 其余自行百度或谷歌。
